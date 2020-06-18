@@ -15,24 +15,24 @@
  */
 package com.example.android.viewpager;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 /**
  * Provides the appropriate {@link Fragment} for a view pager.
  */
-public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
+public class SimpleFragmentPagerAdapter extends FragmentStateAdapter {
 
-    public SimpleFragmentPagerAdapter(FragmentManager fm) {
-        super(fm);
+    public SimpleFragmentPagerAdapter(FragmentActivity fragment) {
+        super(fragment);
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public Fragment createFragment(int position) {
         if (position == 0) {
             return new MondayFragment();
-        } else if (position == 1){
+        } else if (position == 1) {
             return new TuesdayFragment();
         } else if (position == 2) {
             return new WednesdayFragment();
@@ -44,7 +44,7 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return 5;
     }
 }
