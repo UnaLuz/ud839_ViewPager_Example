@@ -7,9 +7,13 @@ Used in a Udacity course in the Beginning Android Nanodegree.
 Pre-requisites
 --------------
 
-- Android SDK v23
-- Android Build Tools v23.0.2
-- Android Support Repository v23.2.1
+- Android SDK v29
+- Android Build Tools v29.0.3
+- AndroidX Appcompat Repository v1.1.0
+- AndroidX Widget ViewPager2 v1.0.0
+
+update courtesy of @msmilkshake
+migration to ViewPager2 by @UnaLuz
 
 Getting Started
 ---------------
