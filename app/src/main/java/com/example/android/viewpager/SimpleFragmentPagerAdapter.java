@@ -15,6 +15,7 @@
  */
 package com.example.android.viewpager;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -28,18 +29,20 @@ public class SimpleFragmentPagerAdapter extends FragmentStateAdapter {
         super(fragment);
     }
 
+    @NonNull
     @Override
     public Fragment createFragment(int position) {
+
         if (position == 0) {
-            return new MondayFragment();
+            return WeekdayFragment.createInstance("Monday");
         } else if (position == 1) {
-            return new TuesdayFragment();
+            return WeekdayFragment.createInstance("Tuesday");
         } else if (position == 2) {
-            return new WednesdayFragment();
+            return WeekdayFragment.createInstance("Wednesday");
         } else if (position == 3) {
-            return new ThursdayFragment();
+            return WeekdayFragment.createInstance("Thursday");
         } else {
-            return new FridayFragment();
+            return WeekdayFragment.createInstance("Friday");
         }
     }
 
