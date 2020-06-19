@@ -21,7 +21,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -30,10 +29,20 @@ import androidx.fragment.app.Fragment;
 public class WeekdayFragment extends Fragment {
     private String day;
 
-    public static WeekdayFragment createInstance(String displayDay) {
+    /**
+     * This method is used to create a custom fragment
+     *
+     * @param whichDay is a string saying one of the days of the week
+     * @return the custom fragment with the day
+     */
+    public static WeekdayFragment createInstance(String whichDay) {
+        // Create the fragment
         WeekdayFragment fragment = new WeekdayFragment();
+        // Create a bundle instance
         Bundle args = new Bundle();
-        args.putString("KEY", displayDay);
+        // Add the string with the day to the fragment bundle
+        args.putString("DAY", whichDay);
+        // Set the bundle in the fragment
         fragment.setArguments(args);
         return fragment;
     }
@@ -41,19 +50,17 @@ public class WeekdayFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        day = getArguments() != null ? getArguments().getString("KEY") : null;
+        // If the fragment bundle was created and set successfully, get the day string
+        day = getArguments() != null ? getArguments().getString("DAY") : null;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_weekday, container, false);
+        // Get the text view where the name of the day will be displayed
         TextView dayText = view.findViewById(R.id.weekday_text_view);
+        // Set the text of the view to the day that was added to the fragment
         dayText.setText(day);
         return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 }

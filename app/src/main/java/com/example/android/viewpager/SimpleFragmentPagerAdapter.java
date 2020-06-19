@@ -32,7 +32,8 @@ public class SimpleFragmentPagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-
+        // Depending on which position of the fragment adapter the user is in
+        // create a fragment with the corresponding day of the week
         if (position == 0) {
             return WeekdayFragment.createInstance("Monday");
         } else if (position == 1) {
@@ -49,5 +50,5 @@ public class SimpleFragmentPagerAdapter extends FragmentStateAdapter {
     @Override
     public int getItemCount() {
         return 5;
-    }
+    } // Cause there are 5 week days
 }
